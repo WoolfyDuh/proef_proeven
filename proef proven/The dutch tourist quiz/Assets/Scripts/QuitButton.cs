@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-public class QuitButton : Buttons
-{
-    private Action func;
-    void Start()
-    {
-        func += Quit;
-        InitializeButton(func);
-    }
+using UnityEngine.UI;
 
-    // Update is called once per frame
-    void Quit()
+public class QuitButton : MonoBehaviour
+{
+    [SerializeField]
+    private Button button;
+    public void Quit()
     {
         Application.Quit();
         Debug.Log("it should quit now");
