@@ -13,9 +13,7 @@ public class Question : MonoBehaviour
     private string province;
     void Start()
     {
-
-
-        province = this.gameObject.tag;
+        InstantiateQuestions();
     }
 
 
@@ -295,7 +293,7 @@ public class Question : MonoBehaviour
         string P12Q1I = "Flevoland is the youngest of the provinces in the Netherlands seeing how it isn’t a natural piece of land but one we made ourselves. The Netherlands drained a part of the ‘Zuiderzee’ to create Flevoland. It took around 75 years to create Flevoland.  ";
 
         List<string> P12Q1C = new List<string> { P12Q1, P12Q1A1, P12Q1A2, P12Q1CA, P12Q1I };
-
+        
         string P12Q2 = "What is the dyke going from Enkuizen to Lelystad called? ";
         string P12Q2A1 = "Afsluitdijk";
         string P12Q2A2 = "Zeedijk";
@@ -312,9 +310,18 @@ public class Question : MonoBehaviour
         FL = new List<List<string>> { P12Q1C, P12Q2C, P12Q3C };
 
         provinces = new List<List<List<string>>> { NH, ZH, Z, NB, U, FL, FR, GR, D, GE, O, L }; //yes i despise this as much as you do
+        Debug.Log("Instantiated");
     }
 
-
+    public List<string> GetQuestion(int integer)
+    {
+        
+        List<List<string>> temp = provinces[integer];
+        int i = Random.Range(0, temp.Count);
+        List<string> question = temp[i];
+        provinces[integer].RemoveAt(i);
+        return question;
+    }
 
 
 
