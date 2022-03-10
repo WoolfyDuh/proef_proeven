@@ -71,19 +71,22 @@ public class QuestionHandler : MonoBehaviour
         return answer;
         
     }
-    public void WrongAnswer(GameObject Answer)
+    public void Answer(bool correct)
     {
-        if (Answer.gameObject.tag == "Correct")
+        if (correct)
         {
-            //display info about question
-            //give points
-            //load next question
 
+            question = false;
+            // also where we'd add the scores
+            Q1 = null;
+            NewQuestion();
 
         }
-        else { 
-        //display info
-        //load next question
+        else {
+            question = false;
+            Q1 = null;
+            NewQuestion();
+
         }
     }
     private void Update()
@@ -92,7 +95,21 @@ public class QuestionHandler : MonoBehaviour
         {
             Q1 = Question.GetQuestion(i);
         }
-        if(Q1 != null && !question)
+        if (Q1 != null && !question)
+        {
+            SetQuestion(Q1[0]);
+            Debug.Log(Q1[3]);
+            SetAnswers(Q1[1], Q1[2], Q1[3]);
+            question = true;
+        }
+    }
+    private void NewQuestion()
+    {
+        while (Q1 == null)
+        {
+            Q1 = Question.GetQuestion(i);
+        }
+        if (Q1 != null && !question)
         {
             SetQuestion(Q1[0]);
             Debug.Log(Q1[3]);
