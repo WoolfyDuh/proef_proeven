@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class QuestionHandler : MonoBehaviour
 {
     [SerializeField]
@@ -16,6 +16,7 @@ public class QuestionHandler : MonoBehaviour
     private GameObject[] Answers = new GameObject[3];
     private List<string> Q1;
     private bool question;
+    private int answered = 0;
     void Start()
     {
         Answers[0] = AnswerA;
@@ -73,6 +74,10 @@ public class QuestionHandler : MonoBehaviour
     }
     public void Answer(bool correct)
     {
+        answered++;
+        if (answered >= 3) {
+            SceneManager.LoadScene("Main Menu");
+        }
         if (correct)
         {
 
@@ -82,12 +87,14 @@ public class QuestionHandler : MonoBehaviour
             NewQuestion();
 
         }
-        else {
+        else
+        {
             question = false;
             Q1 = null;
             NewQuestion();
 
         }
+
     }
     private void Update()
     {

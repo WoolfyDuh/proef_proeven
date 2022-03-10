@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384d0e5f2d4e4a145b48c555c5e9adaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: New
+  scene: NH
   button: {fileID: 0}
 --- !u!114 &99455439
 MonoBehaviour:
